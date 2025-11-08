@@ -1,0 +1,23 @@
+import cv2
+import numpy as np
+from google.colab.patches import cv2_imshow # Import the Colab-specific display function
+
+def apply_smoothing_filters(image_path="sample_image.jpg"):
+    img = cv2.imread(image_path)
+    if img is None:
+        return
+
+    kernel_size = (5, 5) 
+
+    average_blur = cv2.blur(img, kernel_size)
+    gaussian_blur = cv2.GaussianBlur(img, kernel_size, 0)
+    median_blur = cv2.medianBlur(img, 5) 
+
+    cv2_imshow(img) # Replaced cv2.imshow
+    cv2_imshow(average_blur) # Replaced cv2.imshow
+    cv2_imshow(gaussian_blur) # Replaced cv2.imshow
+    cv2_imshow(median_blur) # Replaced cv2.imshow
+
+    # cv2.waitKey(0) and cv2.destroyAllWindows() are not needed/used with cv2_imshow
+    
+apply_smoothing_filters()
